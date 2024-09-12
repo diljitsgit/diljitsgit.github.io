@@ -235,7 +235,11 @@ button{
     cursor: pointer;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1000px) {
+    .logo>p{
+        font-size: 1.6rem;
+    }
+
     .section-1{
         height: auto;
     }
@@ -265,11 +269,12 @@ button{
     }
 
     .section-2-inner{
+        width: 93%;
         grid-template-columns: repeat(1, 1fr);
     }
 
     .card-text{
-        gap: 1rem;
+        gap: 2rem;
     }
 
     .card-text>p{
@@ -277,6 +282,25 @@ button{
     }
 
     .tags{
-        margin :0.2rem;
+        margin :2rem 0.2rem;
     }
+
+    .card-text>p{
+        font-size: 2rem;
+    }
+    
+    .card-text>h3{
+        font-size: 3rem;
+        margin-bottom: 0;
+    }
+    
+    .card-end>button{
+        padding: 1rem 2rem;
+        font-size: 1.6rem;
+    }
+    
+    .tags{
+        font-size: 1.2rem;
+    }
+    
 }
