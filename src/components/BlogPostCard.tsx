@@ -5,6 +5,7 @@ interface Props {
   excerpt: string;
   slug: string;
   tags?: string[];
+  readingTime?: string;
 }
 
 export default function BlogPostCard({
@@ -14,6 +15,7 @@ export default function BlogPostCard({
   excerpt,
   slug,
   tags,
+  readingTime,
 }: Props) {
   return (
     <div
@@ -26,7 +28,10 @@ export default function BlogPostCard({
       >
         {title}
       </a>
-      <p className="text-gray-500 text-sm">{date}</p>
+      <div className="text-gray-500 text-sm flex justify-between mt-1">
+        <span>{date}</span>
+        {readingTime && <span>{readingTime}</span>}
+      </div>
       <p className="mt-2">{excerpt}...</p>
       {tags && tags.length > 0 && (
         <div className="mt-2 space-x-2">
