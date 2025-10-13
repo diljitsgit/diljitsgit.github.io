@@ -1,0 +1,14 @@
+---
+const { title, date } = Astro.props;
+---
+
+<html>
+    <head>
+        <title>{title}</title>
+    </head>
+    <body class="max-w-3xl mx-auto p-4">
+        <h1 class="text-3xl font-bold">{title}</h1>
+        <p class="text-gray-500">{date}</p>
+        <slot />
+    </body>
+</html>

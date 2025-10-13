@@ -1,0 +1,28 @@
+---
+import fs from "fs";
+import path from "path";
+import Footer from "../../components/Footer.tsx";
+import Navbar from "../../components/Navbar.tsx";
+import PostLayout from "../../layouts/PostLayout.astro";
+
+import "../../styles/global.css";
+
+export async function getStaticPaths() {
+    // Step 1: Get all MDX files for the static paths
+    const blogDir = path.resolve("./src/content/blog");
+    const files = fs.readdirSync(blogDir).filter((f) => f.endsWith(".mdx"));
+    return files.map((file) => ({
+        params: { slug: file.replace(/\.mdx$/, "") },
+    }));
+}
+
+// Step 2: Load the specific post
+const { slug } = Astro.params;
+const post = await import(`../../content/blog/${slug}.mdx`);
+---
+
+<Navbar />
+<PostLayout title={post.frontmatter.title} date={post.frontmatter.date}>
+    <post.default />
+</PostLayout>
+<Footer />
