@@ -64,9 +64,9 @@ export default function AsciiRotator({ texts }) {
   return (
     <div
       ref={containerRef}
-      className="text-center mx-auto h-40 overflow-hidden flex items-center justify-center pr-8"
+      className="text-center mx-auto max-h-40 h-40 min-h-40 overflow-hidden flex items-center justify-center pr-8"
     >
-      <pre className="text-[9px] sm:text-[10px] md:text-xs leading-tight font-mono font-medium whitespace-pre-wrap break-all">
+      <pre className="text-[9px] sm:text-[10px] md:text-xs max-h-40 h-40 min-h-40 leading-tight font-mono font-medium whitespace-pre-wrap break-all">
         {displayText}
       </pre>
     </div>

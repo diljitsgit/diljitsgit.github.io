@@ -1,7 +1,7 @@
 ---
-import Hero from "../components/About";
+import About from "../components/About";
 import Footer from "../components/Footer.tsx";
-import About from "../components/Hero";
+import Hero from "../components/Hero";
 import Navbar from "../components/Navbar.tsx";
 import ProjectCard from "../components/ProjectCard.tsx";
 import projects from "../data/projects.ts";
@@ -14,7 +14,7 @@ import "../styles/global.css";
         <Navbar client:only="react" />
         <main>
             <Hero client:only="react" />
-            <About />
+            <About client:only="react" />
 
             <section>
                 <h2 class="text-2xl font-bold mb-4">Projects</h2>
