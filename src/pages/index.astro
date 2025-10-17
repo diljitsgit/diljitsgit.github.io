@@ -1,5 +1,7 @@
 ---
+import Hero from "../components/About";
 import Footer from "../components/Footer.tsx";
+import About from "../components/Hero";
 import Navbar from "../components/Navbar.tsx";
 import ProjectCard from "../components/ProjectCard.tsx";
 import projects from "../data/projects.ts";
@@ -10,13 +12,9 @@ import "../styles/global.css";
 <html>
     <body>
         <Navbar client:only="react" />
-        <main class="p-8">
-            <section class="text-center mb-12">
-                <h1 class="text-4xl font-bold">Hi, I'm Your Name</h1>
-                <p class="mt-4 text-xl">
-                    I build web apps with Astro + React + MDX
-                </p>
-            </section>
+        <main>
+            <Hero client:only="react" />
+            <About />
 
             <section>
                 <h2 class="text-2xl font-bold mb-4">Projects</h2>
