@@ -6,7 +6,7 @@ export default function Navbar() {
 
   return (
     <nav className="sticky top-0 border-[#c9c9c9] border-b bg-[repeating-linear-gradient(135deg,#c9c9c9_0px,#c9c9c9_2px,#ffffff_1px,#ffffff_10px)] z-50">
-      <div className="border-[#c9c9c9] bg-white border-x lg:mx-48 md:mx-16 m-0 p-4 flex items-center justify-between">
+      <div className="border-[#c9c9c9] bg-white border-x lg:mx-48 md:mx-16 m-0 p-4 gap-4 flex items-center justify-between">
         <div className="font-logo text-3xl leading-[1.5rem]">
           <a href="/">
             DILJIT <br />
