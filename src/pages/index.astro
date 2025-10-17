@@ -3,8 +3,7 @@ import About from "../components/About";
 import Footer from "../components/Footer.tsx";
 import Hero from "../components/Hero";
 import Navbar from "../components/Navbar.tsx";
-import ProjectCard from "../components/ProjectCard.tsx";
-import projects from "../data/projects.ts";
+import Projects from "../components/Projects";
 
 import "../styles/global.css";
 ---
@@ -14,26 +13,8 @@ import "../styles/global.css";
         <Navbar client:only="react" />
         <main>
             <Hero client:only="react" />
-            <About client:only="react" />
-
-            <section>
-                <h2 class="text-2xl font-bold mb-4">Projects</h2>
-                <div
-                    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-                >
-                    {
-                        projects.map((project) => (
-                            <ProjectCard
-                                key={project.title}
-                                title={project.title}
-                                description={project.description}
-                                image={project.image}
-                                link={project.link}
-                            />
-                        ))
-                    }
-                </div>
-            </section>
+            <About />
+            <Projects />
         </main>
         <Footer />
     </body>

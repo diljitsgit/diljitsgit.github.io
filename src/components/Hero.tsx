@@ -42,15 +42,15 @@ export default function Hero() {
             <AsciiRotator texts={asciiTexts} client:only="react" />
           </div>
 
-          <p className="mt-8 text-lg text-center font-monoHero font-bold md:text-5xl text-gray-600 max-w-2xl mx-auto w-max">
+          <p className="mt-8 text-2xl text-center font-monoHero font-bold md:text-5xl text-gray-600 max-w-2xl mx-auto w-max">
             Ctrl + Alt +{" "}
-            <span className=" bg-primary text-white px-2 font-mono text-5xl hover:bg-gray-800 transition rounded-md outline-2 outline-offset-1 outline-dashed outline-outline">
+            <span className=" bg-primary text-white px-2 font-mono text-2xl md:text-5xl hover:bg-gray-800 transition rounded-md outline-2 outline-offset-1 outline-dashed outline-outline">
               <span className="border-[#c9c9c9] bg-[repeating-linear-gradient(135deg,rgba(201,201,201,0.1)_0px,rgba(201,201,201,0.1)_2px,rgba(0,128,255,0.1)_1px,rgba(0,128,255,0.1)_5px)] pl-2 rounded-md ">
                 Build.
               </span>
             </span>
           </p>
-          <p className="font-monoHero text-md m-4 max-w-3xl">
+          <p className="font-monoHero text-sm md:text-md m-4 max-w-3xl">
             I build things that work and sometimes things that almost do. Either
             way, I’m having fun pushing buttons until something cool happens.
           </p>

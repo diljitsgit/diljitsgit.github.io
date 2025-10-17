@@ -10,6 +10,7 @@
 @theme {
     --color-primary: #0080ff;
     --color-outline: #c9c9c9;
+    --color-darkOutline: #454545;
     --color-darkBackground: #151415;
 }
 
