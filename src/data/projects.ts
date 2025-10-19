@@ -24,6 +24,14 @@ const projects: Project[] = [
     tags: ["Astro", "MDX", "Blog"],
     link: "#",
   },
+  {
+    title: "Blog Platform",
+    description: "A minimal blog using Astro + MDX",
+    image: "https://your-r2-bucket-url/blog.jpg",
+    slug: "blog-platform",
+    tags: ["Astro", "MDX", "Blog"],
+    link: "#",
+  },
 ];
 
 export default projects;

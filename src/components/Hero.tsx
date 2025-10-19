@@ -37,7 +37,7 @@ export default function Hero() {
   return (
     <section className=" border-[#c9c9c9] border-b">
       <div className="border-[#c9c9c9] bg-white border-x lg:mx-48 md:mx-16 m-0 gap-4 flex items-center justify-between md:py-24 py-6">
-        <div className="flex flex-col justify-center items-center text-center mx-auto">
+        <div className="flex flex-col flex-1 justify-center items-center text-center mx-auto">
           <div className="text-center overflow-x-auto">
             <AsciiRotator texts={asciiTexts} client:only="react" />
           </div>
