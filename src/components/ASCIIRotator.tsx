@@ -5,7 +5,7 @@ function getRandomChar() {
   return chars[Math.floor(Math.random() * chars.length)];
 }
 
-function normalizeAscii(text) {
+function normalizeAscii(text: string) {
   const lines = text.split("\n");
   const indents = lines
     .filter((line) => line.trim().length > 0)
@@ -14,7 +14,7 @@ function normalizeAscii(text) {
   return lines.map((line) => line.slice(minIndent)).join("\n");
 }
 
-export default function AsciiRotator({ texts }) {
+export default function AsciiRotator({ texts }: { texts: string[] }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [displayText, setDisplayText] = useState(normalizeAscii(texts[0]));
   const [isMobile, setIsMobile] = useState(false);
@@ -41,7 +41,7 @@ export default function AsciiRotator({ texts }) {
       const jumbleInterval = setInterval(() => {
         const scrambled = original
           .split("")
-          .map((char) => {
+          .map((char: string) => {
             if (char === " " || char === "\n") return char;
             return Math.random() > 0.65 ? getRandomChar() : char;
           })

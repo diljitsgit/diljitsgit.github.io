@@ -34,11 +34,7 @@ const posts: BlogPost[] = files
     .map((file) => {
         const raw = fs.readFileSync(path.join(blogDir, file), "utf-8");
         const { data, content } = matter(raw);
-        const excerpt =
-            content
-                .split("\n")
-                .find((line) => line.trim() !== "")
-                ?.slice(0, 150) ?? "";
+        const excerpt = content.split("\n")?.slice(0, 150).toString() ?? "";
         const readingTime = calcReadingTime(content);
 
         return {
@@ -56,22 +52,32 @@ const posts: BlogPost[] = files
 ---
 
 <Navbar />
-<main class="p-8 max-w-4xl mx-auto">
-    <h1 class="text-3xl font-bold mb-6">Blog</h1>
-    <div class="space-y-6">
-        {
-            posts.map((post) => (
-                <BlogPostCard
-                    key={post.slug}
-                    slug={post.slug}
-                    title={post.frontmatter.title}
-                    date={post.frontmatter.date}
-                    excerpt={post.excerpt}
-                    tags={post.frontmatter.tags}
-                    readingTime={post.readingTime}
-                />
-            ))
-        }
+<section class="border-outline">
+    <div
+        class="border-darkOutline bg-darkBackground border-x lg:mx-48 md:mx-16 m-0 gap-4 flex items-center justify-between md:py-12 py-6 lg:px-32 md:px-12 px-4"
+    >
+        <div
+            class="flex flex-col justify-center items-center text-center text-white gap-4"
+        >
+            <h2 class="text-5xl font-monoHero font-bold mb-4">Blogs.</h2>
+            <div class="space-y-6 flex flex-col">
+                {
+                    posts
+                        .slice(0, 3)
+                        .map((post) => (
+                            <BlogPostCard
+                                key={post.slug}
+                                slug={post.slug}
+                                title={post.frontmatter.title}
+                                date={post.frontmatter.date}
+                                excerpt={post.excerpt}
+                                tags={post.frontmatter.tags}
+                                readingTime={post.readingTime}
+                            />
+                        ))
+                }
+            </div>
+        </div>
     </div>
-</main>
+</section>
 <Footer />

@@ -9,12 +9,12 @@ interface Props {
 }
 
 const techColors: Record<string, string> = {
-  astro: "bg-orange-500",
-  mdx: "bg-purple-500",
-  react: "bg-blue-500",
-  tailwind: "bg-cyan-500",
-  blender: "bg-orange-700",
-  supabase: "bg-green-600",
+  astro: "[#e43ba2]",
+  mdx: "purple-500",
+  react: "blue-500",
+  tailwind: "cyan-500",
+  blender: "orange-700",
+  supabase: "green-600",
 };
 
 export default function ProjectCard({
@@ -39,7 +39,7 @@ export default function ProjectCard({
           <div className="absolute inset-0 animate-pulse bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200" />
         )}
         <img
-          src={placeholder}
+          src={image || placeholder}
           alt={title}
           className={`w-full h-48 object-cover transition-opacity duration-300 ${
             isLoading ? "opacity-0" : "opacity-100"
@@ -57,7 +57,7 @@ export default function ProjectCard({
             {technologies.map((tech) => (
               <span
                 key={tech}
-                className={`text-white text-xs px-2 py-1 rounded flex items-center gap-1 ${
+                className={`text-white text-xs font-monoHero px-2 py-1 rounded-full flex items-center gap-1 bg-${
                   techColors[tech.toLowerCase()] || "bg-gray-500"
                 } transition-transform hover:scale-105`}
               >

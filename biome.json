@@ -1,0 +1,13 @@
+{
+    "linter": {
+        "rules": {
+            "correctness": {
+                "useUniqueElementIds": {
+                    "options": {
+                        "excludedComponents": ["FormattedMessage"]
+                    }
+                }
+            }
+        }
+    }
+}

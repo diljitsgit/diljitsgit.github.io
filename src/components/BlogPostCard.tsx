@@ -6,7 +6,7 @@ interface Props {
   slug: string;
   tags?: string[];
   readingTime?: string;
-  image?: string; // ✅ added
+  image?: string;
 }
 
 export default function BlogPostCard({

@@ -15,13 +15,15 @@ export default function Navbar() {
         </div>
 
         <div className="hidden md:flex space-x-4 font-mono font-bold lg:gap-24 text-gray-500">
-          <a href="/about">[About]</a>
-          <a href="/projects">[Projects]</a>
+          <a href="/#about">[About]</a>
+          <a href="/#projects">[Projects]</a>
           <a href="/blog">[Blog]</a>
         </div>
 
         <a
-          href="/contact"
+          href="https://cal.com/diljits"
+          target="_blank"
+          rel="noopener"
           className="hidden md:inline-block bg-primary text-white px-1 py-1 font-mono text-sm hover:bg-gray-800 transition rounded-md outline-2 outline-offset-1 outline-dashed outline-outline"
         >
           <div className="border-[#c9c9c9] bg-[repeating-linear-gradient(135deg,rgba(201,201,201,0.1)_0px,rgba(201,201,201,0.1)_2px,rgba(0,128,255,0.1)_1px,rgba(0,128,255,0.1)_5px)] z-50 rounded-md py-1 px-2">
@@ -74,7 +76,9 @@ export default function Navbar() {
             [Blog]
           </a>
           <a
-            href="/contact"
+            href="https://cal.com/diljits"
+            target="_blank"
+            rel="noopener"
             className=" bg-primary text-white px-1 py-1 font-mono text-sm hover:bg-gray-800 transition rounded-md outline-2 outline-offset-1 outline-dashed outline-outline"
           >
             <div className="border-[#c9c9c9] bg-[repeating-linear-gradient(135deg,rgba(201,201,201,0.1)_0px,rgba(201,201,201,0.1)_2px,rgba(0,128,255,0.1)_1px,rgba(0,128,255,0.1)_5px)] z-50 rounded-md py-1 px-2">
