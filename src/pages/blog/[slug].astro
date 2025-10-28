@@ -20,8 +20,10 @@ const post = await import(`../../content/blog/${slug}.mdx`);
 const frontmatter = post.frontmatter;
 ---
 
-<Navbar />
+<div>
+    <Navbar />
 <PostLayout title={frontmatter.title} date={frontmatter.date}>
     <post.default />
 </PostLayout>
 <Footer />
+</div>

@@ -6,9 +6,13 @@ const { title, date } = Astro.props;
     <head>
         <title>{title}</title>
     </head>
-    <body class="max-w-3xl mx-auto p-4">
-        <h1 class="text-3xl font-bold">{title}</h1>
-        <p class="text-gray-500">{date}</p>
-        <slot />
+    <body class="">
+        <div class="border-outline bg-white border-x lg:mx-48 md:mx-16 m-0 gap-4 flex items-center justify-between md:py-12 py-6 lg:px-32 md:px-12 px-4">    
+            <div class="max-w-6xl mx-auto my-12 px-4">
+                <h1 class="text-5xl font-bold">{title}</h1>
+                <p class="text-gray-500 pb-5">{date}</p>
+                <slot />
+            </div>
+        </div>
     </body>
 </html>
