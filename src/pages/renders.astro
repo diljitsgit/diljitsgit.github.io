@@ -1,0 +1,36 @@
+---
+import Footer from "../components/Footer.tsx";
+import Navbar from "../components/Navbar.tsx";
+import RenderImages from "../components/Renders.tsx";
+const bucketBase = "https://pub-fae56afbfe534541a6d5a0e3219b439e.r2.dev/3d-renders";
+
+import "../styles/global.css"
+
+const filenames = [
+    "Bleek-JDM-car.png",
+    "CG-Boost-Challenge.webp",
+    "Chair.webp",
+    "Corvet-Render.png",
+    "Daimer-Render.jpg",
+    "Daytona-Car-Render.png",
+    "Encore-table.webp",
+    "Horse-Sculpt.png",
+    "Music-Vis.png",
+    "Old-Car-Redner.jpg",
+    "RDR2-Concept.png",
+    "Small-Worlds-Challege.jpg",
+    "Sofa-Enviornment-1.png",
+    "Sofa-Enviornment-2.png",
+    "Supra-Render.png",
+    "Table-render.png",
+];
+
+const images = filenames.map((name) => `${bucketBase}/${name}`);
+---
+<html>
+  <body>
+    <Navbar />
+      <RenderImages client:only="react" images={images}/>
+    <Footer />
+  </body>
+</html>

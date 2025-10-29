@@ -13,8 +13,13 @@ const techColors: Record<string, string> = {
     mdx: "bg-yellow-500/50",
     react: "bg-blue-500/50",
     tailwind: "bg-cyan-500/50",
-    blender: "bg-orange-700/50",
+    blender: "bg-orange-400/50",
     supabase: "bg-green-600/50",
+    html: "bg-orange-500/50",
+    css: "bg-blue-500/50",
+    js: "bg-yellow-400/50",
+    api: "bg-purple-500/50",
+    photoshop: "bg-blue-700/50",
 };
 
 export default function ProjectCard({
@@ -24,8 +29,6 @@ export default function ProjectCard({
     link = "#",
     technologies = [],
 }: Props) {
-    const placeholder = "https://placehold.co/400x300";
-    const [isLoading, setIsLoading] = useState(true);
 
     return (
         <a
@@ -35,16 +38,10 @@ export default function ProjectCard({
             className="block border-[1px] border-darkOutline rounded-md overflow-hidden shadow-md hover:shadow-xl hover:-translate-y-1 transition-all cursor-pointer"
         >
             <div className="relative w-full h-48">
-                {isLoading && (
-                    <div className="absolute inset-0 animate-pulse bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200" />
-                )}
                 <img
-                    src={image || placeholder}
+                    src={image}
                     alt={title}
-                    className={`w-full h-48 object-cover transition-opacity duration-300 ${
-                        isLoading ? "opacity-0" : "opacity-100"
-                    }`}
-                    onLoad={() => setIsLoading(false)}
+                    className={`w-full h-48 object-cover transition-opacity duration-300 opacity-100`}
                 />
             </div>
 
