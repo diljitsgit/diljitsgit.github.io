@@ -1,0 +1,15 @@
+---
+import { getPosts } from "../lib/posts";
+import PostList from "./PostList.astro";
+import Section from "./Section.astro";
+
+const posts = (await getPosts()).slice(0, 3);
+---
+
+<Section id="blog" title="Writing.">
+  <PostList posts={posts} />
+  <p class="mt-6 flex gap-4 text-sm">
+    <a href="/blog" class="link">[all posts]</a>
+    <a href="/rss.xml" class="link">[rss feed]</a>
+  </p>
+</Section>

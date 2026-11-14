@@ -1,0 +1,35 @@
+---
+import type { Project } from "../data/projects";
+
+type Props = Project;
+
+const { title, description, image, tags, link } = Astro.props;
+const external = link.startsWith("http");
+---
+
+<a
+  href={link}
+  {...(external ? { target: "_blank", rel: "noopener" } : {})}
+  class="group flex flex-col overflow-hidden rounded-lg border border-line bg-surface transition-colors hover:border-accent"
+>
+  <img
+    src={image}
+    alt=""
+    loading="lazy"
+    decoding="async"
+    class="aspect-video w-full border-b border-line bg-bg object-cover"
+  />
+  <div class="flex flex-1 flex-col gap-2 p-4">
+    <h3 class="font-bold">
+      {title}
+      <span
+        aria-hidden="true"
+        class="inline-block text-accent opacity-0 transition group-hover:translate-x-1 group-hover:opacity-100"
+      >
+        {external ? "↗" : "→"}
+      </span>
+    </h3>
+    <p class="text-sm text-muted">{description}</p>
+    <p class="mt-auto pt-2 text-xs text-muted">{tags.map((tag) => `#${tag.toLowerCase()}`).join(" ")}</p>
+  </div>
+</a>

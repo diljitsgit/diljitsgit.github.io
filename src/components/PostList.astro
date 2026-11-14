@@ -1,0 +1,37 @@
+---
+import { formatDate, type Post, postUrl, readingTime } from "../lib/posts";
+
+interface Props {
+  posts: Post[];
+}
+
+const { posts } = Astro.props;
+---
+
+{
+  posts.length === 0 ? (
+    <p class="text-muted">Nothing here yet. Check back soon.</p>
+  ) : (
+    <ul class="divide-y divide-line border-y border-line">
+      {posts.map((post) => (
+        <li>
+          <a href={postUrl(post)} class="group grid gap-x-6 gap-y-1 py-5 sm:grid-cols-[6.5rem_1fr]">
+            <time datetime={post.data.date.toISOString()} class="pt-0.5 text-sm text-muted">
+              {formatDate(post.data.date)}
+            </time>
+            <div>
+              <h3 class="font-bold transition-colors group-hover:text-accent">
+                {post.data.title}
+                {post.data.draft && <span class="font-normal text-muted"> (draft)</span>}
+              </h3>
+              <p class="mt-1 text-sm text-muted">{post.data.description}</p>
+              <p class="mt-2 text-xs text-muted">
+                {[readingTime(post), ...post.data.tags.map((tag) => `#${tag}`)].join(" · ")}
+              </p>
+            </div>
+          </a>
+        </li>
+      ))}
+    </ul>
+  )
+}

@@ -1,43 +1,15 @@
 ---
-import Footer from "../components/Footer.tsx";
-import Navbar from "../components/Navbar.tsx";
-import RenderImages from "../components/Renders.tsx";
-const bucketBase = "https://pub-fae56afbfe534541a6d5a0e3219b439e.r2.dev/3d-renders";
+import Gallery from "../components/Gallery.astro";
+import PageHeader from "../components/PageHeader.astro";
+import renders from "../data/renders";
+import BaseLayout from "../layouts/BaseLayout.astro";
 
-import "../styles/global.css"
-
-const filenames = [
-    "Bleek-JDM-car.png",
-    "CG-Boost-Challenge.webp",
-    "Chair.webp",
-    "Corvet-Render.png",
-    "Daimer-Render.jpg",
-    "Daytona-Car-Render.png",
-    "Encore-table.webp",
-    "Horse-Sculpt.png",
-    "Music-Vis.png",
-    "Old-Car-Redner.jpg",
-    "RDR2-Concept.png",
-    "Small-Worlds-Challege.jpg",
-    "Sofa-Enviornment-1.png",
-    "Sofa-Enviornment-2.png",
-    "Supra-Render.png",
-    "Table-render.png",
-];
-
-const images = filenames.map((name) => `${bucketBase}/${name}`);
+const lead = "Blender work from the past three years: cars, furniture, sculpts and challenge entries.";
 ---
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} >
-    <title>3D Renders</title>
-  </head>
-  <body>
-    <Navbar />
-      <RenderImages client:only="react" images={images}/>
-    <Footer />
-  </body>
-</html>
+
+<BaseLayout title="3D Renders" description={lead}>
+  <div class="wrap py-14 md:py-20">
+    <PageHeader title="3D Renders." lead={lead} />
+    <Gallery images={renders} />
+  </div>
+</BaseLayout>

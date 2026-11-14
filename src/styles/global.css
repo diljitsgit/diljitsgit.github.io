@@ -1,32 +1,114 @@
-@import url("https://fonts.googleapis.com/css2?family=BBH+Sans+Bogle&family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap");
+@import "@fontsource/ibm-plex-mono/latin-400.css";
+@import "@fontsource/ibm-plex-mono/latin-500.css";
+@import "@fontsource/ibm-plex-mono/latin-700.css";
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
-@theme {
-    --font-logo: "BBH Sans Bogle", sans-serif;
-    --font-mono: "IBM Plex Mono", monospace;
-    --font-monoHero: "Roboto Mono", monospace;
+/* Colours. Light by default, dark when the visitor's system is dark. */
+:root {
+  color-scheme: light dark;
+  --bg: #fafafa;
+  --surface: #ffffff;
+  --fg: #151415;
+  --muted: #66666b;
+  --line: #dcdce0;
+  --accent: #0072e5;
+  --primary: #0080ff;
 }
 
-@theme {
-    --color-primary: #0080ff;
-    --color-outline: #c9c9c9;
-    --color-darkOutline: #454545;
-    --color-darkBackground: #151415;
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #111113;
+    --surface: #19191c;
+    --fg: #ececee;
+    --muted: #9c9ca3;
+    --line: #2c2c31;
+    --accent: #4da3ff;
+  }
 }
 
-@keyframes fade-in {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
+@theme inline {
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-primary: var(--primary);
 }
 
-.animate-fade-in {
-    animation: fade-in 0.3s ease-out;
-}
-
-html {
+@layer base {
+  html {
     scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-bg font-mono text-[15px] leading-relaxed text-fg antialiased;
+  }
+
+  :focus-visible {
+    @apply rounded-sm outline-2 outline-offset-2 outline-accent;
+  }
+
+  ::selection {
+    background: color-mix(in srgb, var(--primary) 30%, transparent);
+  }
+}
+
+/* The one page width used everywhere. */
+@utility wrap {
+  @apply mx-auto w-full max-w-3xl px-5;
+}
+
+/* [bracketed] text links, the site's signature. */
+@utility link {
+  @apply text-muted transition-colors hover:text-accent;
+}
+
+/* Blog post body. */
+.prose {
+  --tw-prose-body: var(--fg);
+  --tw-prose-headings: var(--fg);
+  --tw-prose-links: var(--accent);
+  --tw-prose-bold: var(--fg);
+  --tw-prose-counters: var(--muted);
+  --tw-prose-bullets: var(--muted);
+  --tw-prose-hr: var(--line);
+  --tw-prose-quotes: var(--fg);
+  --tw-prose-quote-borders: var(--line);
+  --tw-prose-captions: var(--muted);
+  --tw-prose-code: var(--fg);
+  --tw-prose-th-borders: var(--line);
+  --tw-prose-td-borders: var(--line);
+  @apply max-w-none font-sans text-base;
+}
+
+.prose :where(h1, h2, h3, h4, code, pre, kbd) {
+  @apply font-mono;
+}
+
+/* Inline code and keys as small chips instead of `backticks`. */
+.prose :where(:not(pre) > code, kbd) {
+  @apply rounded border border-line bg-surface px-1.5 py-0.5 text-[0.85em] font-medium text-fg shadow-none;
+}
+
+.prose :where(code)::before,
+.prose :where(code)::after {
+  content: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

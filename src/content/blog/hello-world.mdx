@@ -1,13 +1,45 @@
 ---
-title: "Hello World"
-date: "2025-10-13"
+title: "Hello, world: how this site is built"
+description: "A quick tour of the stack behind this portfolio: Astro, Tailwind, MDX and a hero made of ASCII characters."
+date: 2025-10-13
+updated: 2026-11-14
+tags: ["astro", "meta"]
 ---
 
-# Hello, MDX Blog!
+Every blog needs a first post, so here is mine: a short tour of how this site
+is put together and why.
 
-This is my first blog post in my Astro portfolio.
- Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
-              non augue sed sapien malesuada malesuada. Nulla facilisi. Morbi ac
-              lectus vitae lacus egestas rhoncus. Praesent facilisis, felis non
-              ultricies dictum, odio neque euismod justo, vel bibendum lectus ex
-              nec lorem.
+## The stack
+
+- **[Astro](https://astro.build)** builds every page to plain HTML ahead of
+  time. There is no framework running in your browser, only a few small
+  scripts for the animated bits.
+- **[Tailwind CSS](https://tailwindcss.com)** handles styling, with a handful
+  of colour variables so the site follows your system's light or dark mode.
+- **MDX** powers this blog. A post is a single file in `src/content/blog`, and
+  its file name becomes the URL.
+- **GitHub Pages** hosts it. Every push to `main` rebuilds and deploys the
+  site through a GitHub Actions workflow.
+
+## The hero
+
+The background on the home page is a `<canvas>` filled with ASCII characters.
+Two slow sine waves decide how "loud" each character is, the field brightens
+around your pointer, and a click sends a ring rippling outwards.
+
+The three keys are real, too. Hold <kbd>Ctrl</kbd> + <kbd>Alt</kbd> on the home
+page and watch what happens.
+
+```ts
+// Two overlapping waves give a slow, uneven drift.
+const wave =
+  0.5 +
+  0.25 * Math.sin(x * 0.012 + t * 0.5) +
+  0.25 * Math.sin(y * 0.02 - t * 0.35);
+```
+
+## What's next
+
+More posts, mostly. I'll write about the things I build, the things I break,
+and whatever I learn from both. If you'd like to follow along, there's an
+[RSS feed](/rss.xml).

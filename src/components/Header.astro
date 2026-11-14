@@ -1,0 +1,35 @@
+---
+import { site } from "../site";
+
+const path = Astro.url.pathname;
+const isCurrent = (href: string) => !href.includes("#") && path.startsWith(href);
+---
+
+<header class="sticky top-0 z-40 border-b border-line bg-bg/85 backdrop-blur-md">
+  <div class="wrap flex flex-wrap items-center justify-between gap-x-6 gap-y-1 py-3">
+    <a href="/" class="font-bold tracking-tight">
+      diljit singh<span class="text-accent">.</span>
+    </a>
+    <nav aria-label="Main" class="flex items-center gap-3 text-xs sm:gap-4 sm:text-sm">
+      {
+        site.nav.map(({ label, href }) => (
+          <a
+            href={href}
+            aria-current={isCurrent(href) ? "page" : undefined}
+            class="link aria-[current]:text-fg"
+          >
+            [{label}]
+          </a>
+        ))
+      }
+      <a
+        href={site.contact}
+        target="_blank"
+        rel="noopener"
+        class="hidden rounded-md bg-primary px-3 py-1 font-medium text-white transition-opacity hover:opacity-85 sm:inline-block"
+      >
+        contact
+      </a>
+    </nav>
+  </div>
+</header>

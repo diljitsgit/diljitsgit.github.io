@@ -1,0 +1,26 @@
+---
+import { site } from "../site";
+
+const links = [...site.socials, { label: "contact", href: site.contact }];
+---
+
+<footer class="border-t border-line">
+  <div class="wrap flex flex-wrap items-center justify-between gap-x-6 gap-y-2 py-6 text-sm text-muted">
+    <p>&copy; {new Date().getFullYear()} {site.name}</p>
+    <ul class="flex flex-wrap gap-4">
+      {
+        links.map(({ label, href }) => (
+          <li>
+            <a
+              href={href}
+              class="link"
+              {...(href.startsWith("http") ? { target: "_blank", rel: "noopener" } : {})}
+            >
+              [{label}]
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</footer>

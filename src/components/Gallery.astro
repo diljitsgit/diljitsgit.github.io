@@ -1,0 +1,69 @@
+---
+interface Props {
+  images: { src: string; alt: string }[];
+}
+
+const { images } = Astro.props;
+---
+
+<div class="columns-2 gap-3 md:columns-3" data-gallery>
+  {
+    images.map(({ src, alt }) => (
+      <button
+        type="button"
+        class="mb-3 block w-full cursor-zoom-in overflow-hidden rounded-md border border-line bg-surface transition-colors hover:border-accent"
+      >
+        <img src={src} alt={alt} loading="lazy" decoding="async" class="w-full" />
+      </button>
+    ))
+  }
+</div>
+
+<dialog
+  data-lightbox
+  aria-label="Image viewer"
+  class="fixed inset-0 m-0 size-full max-h-none max-w-none bg-black/90 text-white backdrop:bg-black/60"
+>
+  <div class="flex size-full items-center justify-center gap-2 p-4">
+    <button type="button" data-step="-1" aria-label="Previous image" class="p-3 text-2xl">&larr;</button>
+    <img alt="" class="max-h-[85dvh] min-w-0 max-w-full flex-1 rounded-md object-contain" />
+    <button type="button" data-step="1" aria-label="Next image" class="p-3 text-2xl">&rarr;</button>
+  </div>
+  <button type="button" data-close aria-label="Close" class="absolute right-4 top-4 p-2 text-sm">[close]</button>
+</dialog>
+
+<script>
+  const thumbs = [...document.querySelectorAll<HTMLImageElement>("[data-gallery] img")];
+  const dialog = document.querySelector<HTMLDialogElement>("[data-lightbox]");
+  const full = dialog?.querySelector("img");
+
+  if (dialog && full) {
+    let current = 0;
+
+    const show = (index: number) => {
+      current = (index + thumbs.length) % thumbs.length;
+      full.src = thumbs[current].src;
+      full.alt = thumbs[current].alt;
+    };
+
+    thumbs.forEach((thumb, index) => {
+      thumb.parentElement?.addEventListener("click", () => {
+        show(index);
+        dialog.showModal();
+      });
+    });
+
+    dialog.addEventListener("click", (event) => {
+      const target = event.target as HTMLElement;
+      const step = target.closest<HTMLElement>("[data-step]")?.dataset.step;
+      if (step) show(current + Number(step));
+      else if (target !== full) dialog.close(); // backdrop or [close]
+    });
+
+    // Esc already closes a <dialog>; arrows move between images.
+    dialog.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowRight") show(current + 1);
+      if (event.key === "ArrowLeft") show(current - 1);
+    });
+  }
+</script>

@@ -1,0 +1,35 @@
+---
+import { Image } from "astro:assets";
+import portrait from "../assets/portrait.png";
+import Section from "./Section.astro";
+---
+
+<Section id="about" title="About me.">
+  <div class="flex flex-col-reverse gap-8 sm:flex-row sm:items-start sm:gap-12">
+    <div class="space-y-4">
+      <p>
+        Hey! I'm Diljit, a design enthusiast who became a frontend developer.
+        I've explored visuals, editing and 3D projects. Eventually, I shifted
+        my focus to creating functional web experiences.
+      </p>
+      <p>
+        Now I concentrate on clean, interactive interfaces with some
+        personality. I enjoy learning, no matter the challenge. I often break
+        things just to improve them, and I'm always trying to pick up new tools
+        or methods.
+      </p>
+      <p class="text-muted">
+        Whether the work is creative or technical, even a little messy, I'm
+        open to trying it all.
+      </p>
+    </div>
+    <Image
+      src={portrait}
+      alt="Portrait of Diljit Singh"
+      width={160}
+      height={160}
+      densities={[1, 2]}
+      class="size-32 shrink-0 rounded-full border border-line object-cover sm:size-40"
+    />
+  </div>
+</Section>

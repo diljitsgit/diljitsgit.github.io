@@ -1,0 +1,35 @@
+---
+import PageHeader from "../../../components/PageHeader.astro";
+import PostList from "../../../components/PostList.astro";
+import TagList from "../../../components/TagList.astro";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { getPosts, getTags, tagSlug } from "../../../lib/posts";
+
+export async function getStaticPaths() {
+  const posts = await getPosts();
+  const tags = getTags(posts).map(({ tag }) => tag);
+
+  return tags.map((tag) => ({
+    params: { tag: tagSlug(tag) },
+    props: {
+      tag,
+      tags,
+      posts: posts.filter((post) => post.data.tags.includes(tag)),
+    },
+  }));
+}
+
+const { tag, tags, posts } = Astro.props;
+const lead = `Every post tagged #${tag}.`;
+---
+
+<BaseLayout title={`#${tag}`} description={lead}>
+  <div class="wrap py-14 md:py-20">
+    <PageHeader title={`#${tag}`} lead={lead}>
+      <div class="mt-6">
+        <TagList tags={tags} active={tag} showAll />
+      </div>
+    </PageHeader>
+    <PostList posts={posts} />
+  </div>
+</BaseLayout>

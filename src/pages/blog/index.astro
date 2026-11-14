@@ -1,0 +1,25 @@
+---
+import PageHeader from "../../components/PageHeader.astro";
+import PostList from "../../components/PostList.astro";
+import TagList from "../../components/TagList.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getPosts, getTags } from "../../lib/posts";
+
+const posts = await getPosts();
+const tags = getTags(posts).map(({ tag }) => tag);
+const lead = "Notes on building for the web, design, 3D and whatever I broke this week.";
+---
+
+<BaseLayout title="Blog" description={lead}>
+  <div class="wrap py-14 md:py-20">
+    <PageHeader title="Writing." lead={lead}>
+      <div class="mt-6">
+        <TagList tags={tags} showAll />
+      </div>
+    </PageHeader>
+    <PostList posts={posts} />
+    <p class="mt-6 text-sm">
+      <a href="/rss.xml" class="link">[subscribe via rss]</a>
+    </p>
+  </div>
+</BaseLayout>
